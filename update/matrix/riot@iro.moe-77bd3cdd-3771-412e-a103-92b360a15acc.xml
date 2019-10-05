@@ -1,0 +1,37 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/matrix</group>
+    <id>77bd3cdd-3771-412e-a103-92b360a15acc</id>
+    <loglevel>INFO</loglevel>
+    <name>riot@iro.moe</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>name: iro-moe-matrix</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='5/10' seconds='55' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>/home/matrix/riot/upgrade.sh</exec>
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>77bd3cdd-3771-412e-a103-92b360a15acc</uuid>
+  </job>
+</joblist>

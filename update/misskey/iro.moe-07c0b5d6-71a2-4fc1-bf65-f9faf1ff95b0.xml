@@ -1,0 +1,37 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/misskey</group>
+    <id>07c0b5d6-71a2-4fc1-bf65-f9faf1ff95b0</id>
+    <loglevel>INFO</loglevel>
+    <name>iro.moe</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>name: iro-moe-misskey</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='5/10' seconds='0' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>/home/misskey/upgrade.sh</exec>
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>07c0b5d6-71a2-4fc1-bf65-f9faf1ff95b0</uuid>
+  </job>
+</joblist>

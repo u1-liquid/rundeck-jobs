@@ -1,0 +1,37 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/mastodon</group>
+    <id>c7590a79-c096-4f2d-ac4a-d119b755309c</id>
+    <loglevel>INFO</loglevel>
+    <name>tsuki.network</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>name: tsuki-network-mastodon</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='5/10' seconds='30' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>/home/mastodon/upgrade.sh</exec>
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>c7590a79-c096-4f2d-ac4a-d119b755309c</uuid>
+  </job>
+</joblist>

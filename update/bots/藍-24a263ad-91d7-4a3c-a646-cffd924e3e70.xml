@@ -1,0 +1,37 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>true</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/bots</group>
+    <id>24a263ad-91d7-4a3c-a646-cffd924e3e70</id>
+    <loglevel>INFO</loglevel>
+    <name>藍</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>tags: ai</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='5/10' seconds='15' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>/home/ai/upgrade.sh</exec>
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>24a263ad-91d7-4a3c-a646-cffd924e3e70</uuid>
+  </job>
+</joblist>

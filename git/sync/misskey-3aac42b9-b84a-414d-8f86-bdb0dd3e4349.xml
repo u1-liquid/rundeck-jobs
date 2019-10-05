@@ -1,0 +1,47 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <group>git/sync</group>
+    <id>3aac42b9-b84a-414d-8f86-bdb0dd3e4349</id>
+    <loglevel>INFO</loglevel>
+    <name>misskey</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='0/10' seconds='0' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
+
+pushd /var/lib/rundeck/workspace/misskey
+
+git fetch --all --tags --prune --prune-tags
+git fetch syuilo --tags --prune --prune-tags
+git push -f u1-liquid --tags
+git push -f tsuki-network --tags
+
+git checkout develop
+git reset --hard syuilo/develop
+git push -f u1-liquid develop:develop
+git push -f tsuki-network develop:suki.tsuki.network
+
+git checkout master
+git reset --hard syuilo/master
+git push -f tsuki-network master:master
+git push -f tsuki-network master:iro.moe
+
+popd
+]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>3aac42b9-b84a-414d-8f86-bdb0dd3e4349</uuid>
+  </job>
+</joblist>

@@ -1,0 +1,37 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description>システムアップグレード</description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>true</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/system</group>
+    <id>305bfa8c-f119-48de-832c-93b398d14b7b</id>
+    <loglevel>INFO</loglevel>
+    <name>System Upgrade</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>tags: root</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <schedule>
+      <month month='*' />
+      <time hour='09' minute='00' seconds='0' />
+      <weekday day='FRI,MON,THU,TUE,WED' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>/opt/maintenance/system-upgrade.sh</exec>
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>305bfa8c-f119-48de-832c-93b398d14b7b</uuid>
+  </job>
+</joblist>

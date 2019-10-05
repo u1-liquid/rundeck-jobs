@@ -1,0 +1,53 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/matrix</group>
+    <id>663abbf6-0419-4269-9aa3-2395d6ed634e</id>
+    <loglevel>INFO</loglevel>
+    <name>synapse@iro.moe</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>name: iro-moe-matrix</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='5/10' seconds='50' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
+
+pushd /home/matrix/synapse > /dev/null
+source env/bin/activate
+pip install --upgrade setuptools
+pip install --upgrade pip
+pip install --upgrade wheel
+pip install --upgrade --pre matrix-synapse | grep -v "Requirement already"
+if [[ $? -ne 0 ]]; then exit 0; fi
+sudo systemctl stop matrix-synapse.service
+sudo systemctl start matrix-synapse.service
+/home/matrix/note 【告知】Synapse Matrix Homeserverが v$(pip show matrix-synapse | grep Version | awk '{print $2}')  にアップグレードされました。
+popd > /dev/null
+
+sudo systemctl status --full --no-pager matrix-synapse.service
+]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>663abbf6-0419-4269-9aa3-2395d6ed634e</uuid>
+  </job>
+</joblist>

@@ -1,0 +1,39 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <group>git/sync</group>
+    <id>eb5ae660-f859-4907-8e47-c6d55dfe9be2</id>
+    <loglevel>INFO</loglevel>
+    <name>ai</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='0/10' seconds='15' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
+
+pushd /var/lib/rundeck/workspace/ai
+
+git fetch --all --tags --prune --prune-tags
+git fetch syuilo --tags --prune --prune-tags
+git push -f u1-liquid --tags
+
+git reset --hard syuilo/master
+git push -f u1-liquid master:master
+
+popd
+]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>eb5ae660-f859-4907-8e47-c6d55dfe9be2</uuid>
+  </job>
+</joblist>

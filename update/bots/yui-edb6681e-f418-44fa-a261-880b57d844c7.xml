@@ -1,0 +1,58 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/bots</group>
+    <id>edb6681e-f418-44fa-a261-880b57d844c7</id>
+    <loglevel>INFO</loglevel>
+    <name>yui</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>tags: yui</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='5/10' seconds='45' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
+
+pushd /home/yui/yui > /dev/null
+git fetch --all --tags --prune --prune-tags
+git checkout master > /dev/null 2>&1
+git status | grep "up to date"
+if [[ $? -eq 0 ]]; then exit 0; fi
+git reset --hard origin/master
+
+source bin/activate
+pip install --upgrade setuptools
+pip install --upgrade pip
+pip install --upgrade wheel
+poetry self:update
+poetry install --no-dev
+sudo systemctl stop slack-yui.service
+sudo systemctl start slack-yui.service
+popd > /dev/null
+
+sudo systemctl status --full --no-pager slack-yui.service
+]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>edb6681e-f418-44fa-a261-880b57d844c7</uuid>
+  </job>
+</joblist>

@@ -1,0 +1,40 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>true</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/system</group>
+    <id>1aeee6dd-63e4-4deb-bafb-fc547208c93c</id>
+    <loglevel>INFO</loglevel>
+    <name>Let's Encrypt certificate renewal</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>tags:root !tags:tsukinet-jpn</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <schedule>
+      <month month='*' />
+      <time hour='10' minute='00' seconds='0' />
+      <weekday day='MON' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>certbot renew</exec>
+      </command>
+      <command>
+        <exec>systemctl reload nginx</exec>
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>1aeee6dd-63e4-4deb-bafb-fc547208c93c</uuid>
+  </job>
+</joblist>
