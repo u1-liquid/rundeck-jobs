@@ -1,0 +1,38 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>management/misskey</group>
+    <id>0e05d2ae-8c8e-454e-b982-647ffa362722</id>
+    <loglevel>INFO</loglevel>
+    <name>Host Recovery</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter></filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!bin/bash
+
+pushd ~/live
+rm -rf built node_modules/
+git reset --hard HEAD~1
+popd
+]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>0e05d2ae-8c8e-454e-b982-647ffa362722</uuid>
+  </job>
+</joblist>
