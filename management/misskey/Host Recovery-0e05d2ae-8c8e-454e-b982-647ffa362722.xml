@@ -22,7 +22,7 @@
     <scheduleEnabled>true</scheduleEnabled>
     <sequence keepgoing='false' strategy='node-first'>
       <command>
-        <script><![CDATA[#!bin/bash
+        <script><![CDATA[#!/bin/bash
 
 pushd ~/live
 rm -rf built node_modules/
