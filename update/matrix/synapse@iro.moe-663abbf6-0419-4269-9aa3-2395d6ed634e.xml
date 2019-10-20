@@ -48,6 +48,7 @@ sudo systemctl status --full --no-pager matrix-synapse.service
       </command>
     </sequence>
     <timeZone>Asia/Tokyo</timeZone>
+    <timeout>10m</timeout>
     <uuid>663abbf6-0419-4269-9aa3-2395d6ed634e</uuid>
   </job>
 </joblist>

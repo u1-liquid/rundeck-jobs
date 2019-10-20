@@ -32,6 +32,7 @@
       </command>
     </sequence>
     <timeZone>Asia/Tokyo</timeZone>
+    <timeout>5m</timeout>
     <uuid>24a263ad-91d7-4a3c-a646-cffd924e3e70</uuid>
   </job>
 </joblist>

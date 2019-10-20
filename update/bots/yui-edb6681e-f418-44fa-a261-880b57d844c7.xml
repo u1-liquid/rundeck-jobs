@@ -53,6 +53,7 @@ sudo systemctl status --full --no-pager slack-yui.service
       </command>
     </sequence>
     <timeZone>Asia/Tokyo</timeZone>
+    <timeout>5m</timeout>
     <uuid>edb6681e-f418-44fa-a261-880b57d844c7</uuid>
   </job>
 </joblist>
