@@ -29,11 +29,7 @@ git push -f tsuki-network --tags
 git checkout develop
 git reset --hard syuilo/develop
 git push -f u1-liquid develop:develop
-# git push -f tsuki-network develop:suki.tsuki.network
-
-git checkout new-ui
-git reset --hard syuilo/new-ui
-git push -f tsuki-network new-ui:suki.tsuki.network
+git push -f tsuki-network develop:suki.tsuki.network
 
 git checkout master
 git reset --hard syuilo/master
