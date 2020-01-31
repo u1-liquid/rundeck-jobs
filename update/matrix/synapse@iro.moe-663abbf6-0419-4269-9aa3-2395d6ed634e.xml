@@ -32,9 +32,7 @@
 
 pushd /home/matrix/synapse > /dev/null
 source env/bin/activate
-pip install --upgrade setuptools
-pip install --upgrade pip
-pip install --upgrade wheel
+python -m pip install --upgrade pip wheel setuptools
 pip install --upgrade --pre matrix-synapse | grep -v "Requirement already"
 if [[ $? -ne 0 ]]; then exit 0; fi
 sudo systemctl stop matrix-synapse.service
