@@ -38,9 +38,7 @@ if [[ $? -eq 0 ]]; then exit 0; fi
 git reset --hard origin/master
 
 source bin/activate
-pip install --upgrade setuptools
-pip install --upgrade pip
-pip install --upgrade wheel
+python -m pip install --upgrade pip wheel setuptools
 poetry self:update
 poetry install --no-dev
 sudo systemctl stop slack-yui.service
