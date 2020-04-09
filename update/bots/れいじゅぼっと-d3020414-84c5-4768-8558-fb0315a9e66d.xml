@@ -7,7 +7,7 @@
       <keepgoing>true</keepgoing>
       <rankOrder>ascending</rankOrder>
       <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
-      <threadcount>1</threadcount>
+      <threadcount>2</threadcount>
     </dispatch>
     <executionEnabled>true</executionEnabled>
     <group>update/bots</group>

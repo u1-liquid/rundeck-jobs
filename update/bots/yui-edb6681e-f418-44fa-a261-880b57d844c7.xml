@@ -36,10 +36,9 @@ git checkout master > /dev/null 2>&1
 git status | grep "up to date"
 if [[ $? -eq 0 ]]; then exit 0; fi
 git reset --hard origin/master
-
-source bin/activate
+source /home/yui/pyenv-activate
 python -m pip install --upgrade pip wheel setuptools
-poetry self:update
+poetry self update
 poetry install --no-dev
 sudo systemctl stop slack-yui.service
 sudo systemctl start slack-yui.service
