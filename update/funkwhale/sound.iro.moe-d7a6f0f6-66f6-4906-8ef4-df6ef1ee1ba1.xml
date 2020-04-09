@@ -1,0 +1,71 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>update/funkwhale</group>
+    <id>d7a6f0f6-66f6-4906-8ef4-df6ef1ee1ba1</id>
+    <loglevel>INFO</loglevel>
+    <name>sound.iro.moe</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>name: iro-moe-funkwhale</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <plugins />
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='5/10' seconds='40' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
+
+pushd /home/funkwhale/live > /dev/null
+git fetch --all --tags --prune --prune-tags
+git checkout develop > /dev/null 2>&1
+git status | grep "up to date"
+if [[ $? -eq 0 ]]; then exit 0; fi
+git reset --hard origin/develop
+
+GIT_CURRENT_COMMIT=$(git rev-parse HEAD)
+UPGRADE_VERSION=$(git describe --tags --exact-match || echo "$(git describe --tags $(git rev-list --tags --max-count=1)) (${GIT_CURRENT_COMMIT:0:8})")
+
+source /home/funkwhale/pyenv-activate
+python -m pip install --upgrade pip wheel setuptools
+pip install -r api/requirements.txt
+pushd front
+. ~/.nvm/nvm.sh
+nvm install 12
+nvm use 12
+npx yarn install --no-dev
+npx yarn build
+popd
+
+sudo systemctl stop funkwhale.target
+python api/manage.py migrate --noinput
+python api/manage.py collectstatic --noinput
+sudo systemctl start funkwhale.target
+popd > /dev/null
+
+sudo systemctl status --full --no-pager funkwhale-server.service funkwhale-beat.service funkwhale-worker.service
+/home/funkwhale/note 【告知】FunkWhaleが v$UPGRADE_VERSION にアップグレードされました。
+]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <timeout>10m</timeout>
+    <uuid>d7a6f0f6-66f6-4906-8ef4-df6ef1ee1ba1</uuid>
+  </job>
+</joblist>

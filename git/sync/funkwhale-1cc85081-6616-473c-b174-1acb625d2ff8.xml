@@ -1,0 +1,45 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <executionEnabled>true</executionEnabled>
+    <group>git/sync</group>
+    <id>1cc85081-6616-473c-b174-1acb625d2ff8</id>
+    <loglevel>INFO</loglevel>
+    <name>funkwhale</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <plugins />
+    <schedule>
+      <month month='*' />
+      <time hour='*' minute='0/10' seconds='20' />
+      <weekday day='*' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <script><![CDATA[#!/bin/bash
+
+pushd /var/lib/rundeck/workspace/funkwhale
+
+git fetch --all --tags --prune --prune-tags
+git fetch funkwhale --tags --prune --prune-tags
+git push -f u1-liquid --tags
+
+git checkout develop
+git reset --hard funkwhale/develop
+git push -f u1-liquid develop:develop
+
+git checkout master
+git reset --hard funkwhale/master
+git push -f u1-liquid master:master
+
+popd
+]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>1cc85081-6616-473c-b174-1acb625d2ff8</uuid>
+  </job>
+</joblist>
