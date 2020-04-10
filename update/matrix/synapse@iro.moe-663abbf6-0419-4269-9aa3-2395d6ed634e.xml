@@ -19,6 +19,7 @@
       <filter>name: iro-moe-matrix</filter>
     </nodefilters>
     <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <plugins />
     <schedule>
       <month month='*' />
       <time hour='*' minute='5/10' seconds='50' />
@@ -31,7 +32,7 @@
         <script><![CDATA[#!/bin/bash
 
 pushd /home/matrix/synapse > /dev/null
-source env/bin/activate
+source /home/matrix/pyenv-activate
 python -m pip install --upgrade pip wheel setuptools
 pip install --upgrade --pre matrix-synapse | grep -v "Requirement already"
 if [[ $? -ne 0 ]]; then exit 0; fi
