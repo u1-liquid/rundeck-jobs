@@ -8,6 +8,7 @@
     <loglevel>INFO</loglevel>
     <name>misskey</name>
     <nodeFilterEditable>false</nodeFilterEditable>
+    <plugins />
     <schedule>
       <month month='*' />
       <time hour='*' minute='0/10' seconds='0' />
