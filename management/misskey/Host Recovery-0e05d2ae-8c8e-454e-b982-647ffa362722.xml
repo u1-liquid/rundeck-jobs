@@ -2,12 +2,24 @@
   <job>
     <defaultTab>nodes</defaultTab>
     <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
     <executionEnabled>true</executionEnabled>
     <group>management/misskey</group>
     <id>0e05d2ae-8c8e-454e-b982-647ffa362722</id>
     <loglevel>INFO</loglevel>
     <name>Host Recovery</name>
     <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>tags: misskey</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <plugins />
     <scheduleEnabled>true</scheduleEnabled>
     <sequence keepgoing='false' strategy='node-first'>
       <command>
