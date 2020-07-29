@@ -35,7 +35,7 @@ pushd /home/matrix/synapse > /dev/null
 source /home/matrix/pyenv-activate
 python -m pip install --upgrade pip wheel setuptools
 pip install --upgrade --pre matrix-synapse | grep "up-to-date"
-if [[ $? -ne 0 ]]; then exit 0; fi
+if [[ $? -eq 0 ]]; then exit 0; fi
 sudo systemctl stop matrix-synapse.service
 sudo systemctl start matrix-synapse.service
 /home/matrix/note 【告知】Synapse Matrix Homeserverが v$(pip show matrix-synapse | grep Version | awk '{print $2}')  にアップグレードされました。
