@@ -1,0 +1,38 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>false</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>2</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <group>management/misskey</group>
+    <id>d137f08c-f99e-4429-bf2a-f0b26aa1be3e</id>
+    <loglevel>INFO</loglevel>
+    <name>Truncate Misskey Logs</name>
+    <nodeFilterEditable>false</nodeFilterEditable>
+    <nodefilters>
+      <filter>.+-misskey</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <plugins />
+    <schedule>
+      <month month='*' />
+      <time hour='05' minute='00' seconds='0' />
+      <weekday day='SUN' />
+      <year year='*' />
+    </schedule>
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='false' strategy='node-first'>
+      <command>
+        <exec>psql -c ""'TRUNCATE TABLE LOG CASCADE'""</exec>
+      </command>
+    </sequence>
+    <timeZone>Asia/Tokyo</timeZone>
+    <uuid>d137f08c-f99e-4429-bf2a-f0b26aa1be3e</uuid>
+  </job>
+</joblist>
